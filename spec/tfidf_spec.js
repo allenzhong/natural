@@ -24,6 +24,17 @@ var TfIdf = require('../lib/natural/tfidf/tfidf');
 var tfidf;
 
 describe('tfidf', function() {
+    describe('term frequency', function() {
+        it('should accurate', function() {
+            tfidf = new TfIdf();
+            tfidf.addDocument('document one');
+            tfidf.addDocument('document Two');
+            tfidf.addDocument('Three');
+            tfidf.addDocument('document Four');
+            expect(tfidf.termFrequency('document')).toBe(3);
+        });
+    });
+
     describe('stateless operations', function() {
         it('should tf', function() {
             expect(TfIdf.tf('document', { document : 2, one : 1 })).toBe(2);
